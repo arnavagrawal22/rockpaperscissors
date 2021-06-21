@@ -1,6 +1,5 @@
 // rock 0-paper 1-scissor-2
-// to get computers response
-let computerResponse = Math.floor(Math.random() * 3);   
+let computerResponse;
 let computerScore = 0;
 let playerScore = 0;
 let playerResponse;
@@ -11,58 +10,55 @@ function game() {
     playerSelection = playerSelection.toLowerCase();
     if (playerSelection == "rock") {
       playerResponse = 0;
-    }
-    if (playerSelection == "paper") {
+    } else if (playerSelection == "paper") {
       playerResponse = 1;
-    }
-    if (playerSelection == "scissor") {
+    } else if (playerSelection == "scissors") {
       playerResponse = 2;
+    } else {
+      alert("Please check your response and try again");
+      i--;
+      continue;
     }
-    
+
+    computerResponse = computer();
     console.log(computerResponse);
-    scoreIncrease(playerResponse,computerResponse);
-    alert(playerScore);
-    alert(computerScore);
-    
+    console.log(scoreIncrease(playerResponse, computerResponse));
+  }
+  alert(
+    `Final score player ${playerScore} and computer ${computerScore} Thanks for playing `
+  );
+  if(playerScore>computerScore){
+      alert("Congratulations! You win!!")
+  }
+  else{
+      alert("The computer has won")
   }
 }
 
-function scoreIncrease(playerResponse,computerResponse)
-{
-    if(playerResponse==computerResponse)
-    {
-        return `That was a draw. Try Again! Score: ${playerScore} to ${computerScore}`;
-    }
-    else if(playerResponse==0 && computerResponse==1)
-    {
-        computerScore++;
-        return `Computer Won, Score: ${playerScore} to ${computerScore}`;
-    }
-    else if(playerResponse==0 && computerResponse==2)
-    {
-        playerScore++;
-        return `You Won, Score: ${playerScore} to ${computerScore}`;
-    }
-    else if(playerResponse==1 && computerResponse==0)
-    {
-        playerScore++;
-        return `You Won, Score: ${playerScore} to ${computerScore}`;
-    }
-    else if(playerResponse==1 && computerResponse==2)
-    {
-        computerScore++;
-        return `Computer Won, Score: ${playerScore} to ${computerScore}`;
-    }
-    else if(playerResponse==2 && computerResponse==0)
-    {
-        computerScore++;
-        return `Computer Won, Score: ${playerScore} to ${computerScore}`;
-    }
-    else if(playerResponse==2 && computerResponse==1)
-    {
-        playerScore++;
-        return `You Won, Score: ${playerScore} to ${computerScore}`;
-    }
+function computer() {
+  return Math.floor(Math.random() * 3);
 }
 
-alert(playerResponse);
+function scoreIncrease(playerResponse, computerResponse) {
+  if (playerResponse == computerResponse) {
+    return `That was a draw. Try Again! Score: ${playerScore} to ${computerScore}`;
+  } else if (playerResponse == 0 && computerResponse == 1) {
+    computerScore++;
+    return `Computer Won, Score: ${playerScore} to ${computerScore}`;
+  } else if (playerResponse == 0 && computerResponse == 2) {
+    playerScore++;
+    return `You Won, Score: ${playerScore} to ${computerScore}`;
+  } else if (playerResponse == 1 && computerResponse == 0) {
+    playerScore++;
+    return `You Won, Score: ${playerScore} to ${computerScore}`;
+  } else if (playerResponse == 1 && computerResponse == 2) {
+    computerScore++;
+    return `Computer Won, Score: ${playerScore} to ${computerScore}`;
+  } else if (playerResponse == 2 && computerResponse == 0) {
+    computerScore++;
+    return `Computer Won, Score: ${playerScore} to ${computerScore}`;
+  } else if (playerResponse == 2 && computerResponse == 1) {
+    playerScore++;
+    return `You Won, Score: ${playerScore} to ${computerScore}`;
+  }
+}
