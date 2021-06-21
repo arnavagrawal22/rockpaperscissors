@@ -1,10 +1,10 @@
 // rock 0-paper 1-scissor-2
 // to get computers response
-let computerResponse = Math.floor(Math.random() * 3);
+let computerResponse = Math.floor(Math.random() * 3);   
 let computerScore = 0;
 let playerScore = 0;
 let playerResponse;
-
+game();
 function game() {
   for (let i = 0; i < 5; i++) {
     let playerSelection = prompt("Enter rock paper or scissors");
@@ -18,7 +18,11 @@ function game() {
     if (playerSelection == "scissor") {
       playerResponse = 2;
     }
-
+    
+    console.log(computerResponse);
+    scoreIncrease(playerResponse,computerResponse);
+    alert(playerScore);
+    alert(computerScore);
     
   }
 }
@@ -32,31 +36,32 @@ function scoreIncrease(playerResponse,computerResponse)
     else if(playerResponse==0 && computerResponse==1)
     {
         computerScore++;
-        return `That was a draw. Try Again! Score: ${playerScore} to ${computerScore}`;
+        return `Computer Won, Score: ${playerScore} to ${computerScore}`;
     }
     else if(playerResponse==0 && computerResponse==2)
     {
         playerScore++;
-        return `That was a draw. Try Again! Score: ${playerScore} to ${computerScore}`;
+        return `You Won, Score: ${playerScore} to ${computerScore}`;
     }
     else if(playerResponse==1 && computerResponse==0)
     {
         playerScore++;
-        return `That was a draw. Try Again! Score: ${playerScore} to ${computerScore}`;
+        return `You Won, Score: ${playerScore} to ${computerScore}`;
     }
     else if(playerResponse==1 && computerResponse==2)
     {
         computerScore++;
-        return `That was a draw. Try Again! Score: ${playerScore} to ${computerScore}`;
+        return `Computer Won, Score: ${playerScore} to ${computerScore}`;
     }
     else if(playerResponse==2 && computerResponse==0)
     {
-        
-        return `That was a draw. Try Again! Score: ${playerScore} to ${computerScore}`;
+        computerScore++;
+        return `Computer Won, Score: ${playerScore} to ${computerScore}`;
     }
     else if(playerResponse==2 && computerResponse==1)
     {
-        return `That was a draw. Try Again! Score: ${playerScore} to ${computerScore}`;
+        playerScore++;
+        return `You Won, Score: ${playerScore} to ${computerScore}`;
     }
 }
 
